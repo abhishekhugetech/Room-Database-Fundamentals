@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Getting Started with Room Database</string>
+    <string name="title_activity_add_book">AddBook</string>
+</resources>
