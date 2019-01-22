@@ -5,6 +5,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import com.epiclancers.gettingstartedwithroomdatabase.room.entity.Book;
 
@@ -20,6 +21,9 @@ public interface BookDao {
 
     @Delete
     void deleteBook(Book book);
+
+    @Update
+    void updateBook(Book book);
 }
 
 

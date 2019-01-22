@@ -1,7 +1,9 @@
 package com.epiclancers.gettingstartedwithroomdatabase.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epiclancers.gettingstartedwithroomdatabase.R;
+import com.epiclancers.gettingstartedwithroomdatabase.activity.MainActivity;
+import com.epiclancers.gettingstartedwithroomdatabase.activity.UpdateBook;
 import com.epiclancers.gettingstartedwithroomdatabase.room.entity.Book;
 
 import java.util.List;
@@ -58,12 +62,14 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
 
         TextView bookName,authorName;
         ImageView deleteBook;
+        ConstraintLayout view;
 
         public BookViewHolder(@NonNull View itemView) {
             super(itemView);
             bookName = itemView.findViewById(R.id.book_name);
             authorName = itemView.findViewById(R.id.author_name);
             deleteBook = itemView.findViewById(R.id.delete_book);
+            view = itemView.findViewById(R.id.cons);
         }
 
         public void setData(final Book book) {
@@ -75,6 +81,16 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
                 }
             });
             authorName.setText(book.getAuthorName());
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, UpdateBook.class);
+                    intent.putExtra(MainActivity.KEY_BOOK_NAME , book.getBook_name());
+                    intent.putExtra(MainActivity.KEY_BOOK_ID , book.getBook_id());
+                    intent.putExtra(MainActivity.KEY_AUTHOR_NAME , book.getAuthorName());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 

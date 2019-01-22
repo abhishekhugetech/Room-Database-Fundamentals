@@ -46,6 +46,16 @@ public class BookViewModel extends AndroidViewModel {
         });
         thread.start();
     }
+
+    public void updateBook(final Book book) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                bookDao.updateBook(book);
+            }
+        });
+        thread.start();
+    }
 }
 
 

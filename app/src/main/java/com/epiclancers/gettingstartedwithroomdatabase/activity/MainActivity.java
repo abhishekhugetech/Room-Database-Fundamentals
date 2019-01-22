@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements BookAdapter.OnDel
     FloatingActionButton fab;
     RecyclerView recyclerView;
     private BookAdapter adapter;
+    public static final String KEY_BOOK_NAME = "book_name";
+    public static final String KEY_AUTHOR_NAME = "author_name";
+    public static final String KEY_BOOK_ID = "book_id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
