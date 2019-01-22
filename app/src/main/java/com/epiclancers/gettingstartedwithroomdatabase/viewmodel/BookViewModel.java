@@ -37,6 +37,15 @@ public class BookViewModel extends AndroidViewModel {
         thread.start();
     }
 
+    public void deleteBook(final Book book) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                bookDao.deleteBook(book);
+            }
+        });
+        thread.start();
+    }
 }
 
 

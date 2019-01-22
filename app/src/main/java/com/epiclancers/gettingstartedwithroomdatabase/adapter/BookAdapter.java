@@ -19,10 +19,16 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
 
     List<Book> bookList;
     Context context;
+    OnDeleteClickListener onDeleteClickListener;
 
-    public BookAdapter(List<Book> bookList, Context context) {
+    public interface OnDeleteClickListener{
+        public void onDelete(Book book);
+    }
+
+    public BookAdapter(List<Book> bookList, Context context,OnDeleteClickListener onDeleteClickListener) {
         this.bookList = bookList;
         this.context = context;
+        this.onDeleteClickListener = onDeleteClickListener;
     }
 
     @NonNull
@@ -65,7 +71,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             deleteBook.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, "Deleted book " + book.getBook_id(), Toast.LENGTH_SHORT).show();
+                    onDeleteClickListener.onDelete(book);
                 }
             });
             authorName.setText(book.getAuthorName());

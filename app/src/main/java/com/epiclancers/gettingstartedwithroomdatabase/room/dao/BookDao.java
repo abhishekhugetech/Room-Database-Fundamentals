@@ -2,6 +2,7 @@ package com.epiclancers.gettingstartedwithroomdatabase.room.dao;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
@@ -16,6 +17,9 @@ public interface BookDao {
 
     @Query("SELECT * FROM books_table")
     LiveData<List<Book>> getBooks();
+
+    @Delete
+    void deleteBook(Book book);
 }
 
 

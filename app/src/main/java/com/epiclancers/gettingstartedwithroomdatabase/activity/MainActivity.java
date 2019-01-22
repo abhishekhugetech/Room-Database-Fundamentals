@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.epiclancers.gettingstartedwithroomdatabase.R;
 import com.epiclancers.gettingstartedwithroomdatabase.adapter.BookAdapter;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BookAdapter.OnDeleteClickListener {
 
     private BookViewModel viewModel;
     FloatingActionButton fab;
@@ -52,9 +53,15 @@ public class MainActivity extends AppCompatActivity {
         });
         recyclerView = findViewById(R.id.recyclerView);
         List<Book> list =new ArrayList<>();
-        adapter = new BookAdapter(list,this);
+        adapter = new BookAdapter(list,this , this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public void onDelete(Book book) {
+        Toast.makeText(this, "Deleted the Book " + book.getBook_name(), Toast.LENGTH_SHORT).show();
+        viewModel.deleteBook(book);
     }
 }
 
