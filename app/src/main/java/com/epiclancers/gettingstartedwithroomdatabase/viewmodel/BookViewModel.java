@@ -2,6 +2,7 @@ package com.epiclancers.gettingstartedwithroomdatabase.viewmodel;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -10,15 +11,19 @@ import com.epiclancers.gettingstartedwithroomdatabase.room.BookRoomDatabase;
 import com.epiclancers.gettingstartedwithroomdatabase.room.dao.BookDao;
 import com.epiclancers.gettingstartedwithroomdatabase.room.entity.Book;
 
+import java.util.List;
+
 
 public class BookViewModel extends AndroidViewModel {
 
-    private BookDao bookDao;
+    public BookDao bookDao;
+    public LiveData<List<Book>> bookLiveData;
 
     public BookViewModel(@NonNull Application application) {
         super(application);
         BookRoomDatabase database = BookRoomDatabase.getInstance(application);
         bookDao = database.bookDao();
+        bookLiveData = bookDao.getBooks();
     }
 
     public void insertBook(final Book book){
