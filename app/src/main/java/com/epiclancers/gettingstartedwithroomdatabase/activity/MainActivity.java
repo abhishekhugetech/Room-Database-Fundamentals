@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements BookAdapter.OnDel
     @Override
     public void onDelete(Book book) {
         Toast.makeText(this, "Deleted the Book " + book.getBook_name(), Toast.LENGTH_SHORT).show();
-        viewModel.deleteBook(book);
+        viewModel.repository.deleteBook(book);
     }
 
     @Override

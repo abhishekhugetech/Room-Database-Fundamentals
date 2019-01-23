@@ -36,7 +36,7 @@ public class AddBook extends AppCompatActivity {
                     Toast.makeText(AddBook.this, "Please fill both the Fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                bookViewModel.insertBook(new Book(bookName.getText().toString(),authorName.getText().toString()));
+                bookViewModel.repository.insertBook(new Book(bookName.getText().toString(),authorName.getText().toString()));
                 Toast.makeText(getApplicationContext() , "Book Added", Toast.LENGTH_SHORT).show();
                 finish();
             }

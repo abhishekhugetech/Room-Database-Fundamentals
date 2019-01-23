@@ -44,7 +44,7 @@ public class UpdateBook extends AppCompatActivity {
                 String updated_authorName = authorName.getText().toString();
                 if (!updated_authorName.isEmpty() && !updated_bookName.isEmpty()){
                     if (!book_name.equals(updated_bookName) || !author_name.equals(updated_authorName)){
-                        bookViewModel.updateBook(new Book(book_id,updated_bookName,updated_authorName));
+                        bookViewModel.repository.updateBook(new Book(book_id,updated_bookName,updated_authorName));
                         Toast.makeText(UpdateBook.this, "Book was Updated", Toast.LENGTH_SHORT).show();
                         finish();
                     }
