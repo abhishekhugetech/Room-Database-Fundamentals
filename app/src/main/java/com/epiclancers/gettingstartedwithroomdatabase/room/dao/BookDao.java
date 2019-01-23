@@ -19,6 +19,9 @@ public interface BookDao {
     @Query("SELECT * FROM books_table")
     LiveData<List<Book>> getBooks();
 
+    @Query("SELECT * FROM books_table where book_name like :bookName OR author_name like :bookName")
+    LiveData<List<Book>> getBooksByQuery(String bookName);
+
     @Delete
     void deleteBook(Book book);
 

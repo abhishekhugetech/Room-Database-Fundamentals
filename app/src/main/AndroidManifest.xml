@@ -11,17 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activity.SearchResultActivty"></activity>
         <activity
             android:name=".activity.UpdateBook"
             android:label="@string/title_activity_update_book"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.AddBook"
             android:label="@string/title_activity_add_book"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.MainActivity">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="Your Book Collection">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -77,7 +77,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             deleteBook.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onDeleteClickListener.onDelete(book);
+                    if (onDeleteClickListener!=null) onDeleteClickListener.onDelete(book);
                 }
             });
             authorName.setText(book.getAuthorName());
